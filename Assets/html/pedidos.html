@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="shortcut icon" href="../img/DC_Comics_logo.png" type="image/x-icon">
+  
+  <!-- Bootstrap CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous"
+  />
+  
+  <title>Pizzaria</title>
+  <style>
+    .container-pizzas { display: flex; justify-content: space-around; margin: 20px 0; }
+    .card { width: 18rem; text-align: center; }
+    #cart { margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-red">
+    <a class="navbar-brand" href="#"
+      ><img
+        style="width: 50px; height: 50px"
+        src="../img/DC_Comics_logo.png"
+        alt=""
+    /></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="../../index.html"
+            >Home <span class="sr-only">(current)</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Cardápio
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Cardápio</a>
+            <a class="dropdown-item" href="#">Realizar Pedido</a>
+            <div class="dropdown-divider"></div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contato</a>
+        </li>
+      </ul>
+      <form
+        action="Assets/html/pedidos.html"
+        class="form-inline my-2 my-lg-0"
+      >
+        <button class="pedir" type="submit">Fazer Pedido</button>
+      </form>
+    </div>
+  </nav>
+
+  <!-- Seção de Pizzas -->
+  <div class="container-pizzas">
+    <div class="card">
+      <img src="../img/pizza-mussarela.jpg" class="card-img-top" alt="Pizza">
+      <div class="card-body">
+        <h5 class="card-title">Pizza Mussarela</h5>
+        <p class="card-text">R$ 50,00</p>
+        <button class="pedir" data-sabor="Mussarela" data-preco="50">Pedir</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="../img/pizza-calabresa.jpg" class="card-img-top" alt="Pizza">
+      <div class="card-body">
+        <h5 class="card-title">Pizza Calabresa</h5>
+        <p class="card-text">R$ 55,00</p>
+        <button class="pedir" data-sabor="Calabresa" data-preco="55">Pedir</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="../img/pizza-portuga.jpg" class="card-img-top" alt="Pizza">
+      <div class="card-body">
+        <h5 class="card-title">Pizza Portuguesa</h5>
+        <p class="card-text">R$ 60,00</p>
+        <button class="pedir" data-sabor="Portuguesa" data-preco="60">Pedir</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Pedido -->
+  <div class="modal fade" id="pedidoModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Adicionar ao Carrinho</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="pedidoForm">
+            <div class="form-group">
+              <label>Quantidade:</label>
+              <input type="number" id="quantidade" class="form-control" min="1" value="1">
+            </div>
+            <div class="form-group">
+              <label>Ingredientes adicionais:</label>
+              <select multiple class="form-control" id="ingredientes">
+                <option value="Azeitona">Azeitona</option>
+                <option value="Bacon">Bacon</option>
+                <option value="Cebola">Cebola</option>
+                <option value="Tomate">Tomate</option>
+              </select>
+            </div>
+            <input type="hidden" id="pizzaSabor">
+            <input type="hidden" id="pizzaPreco">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="adicionarCarrinho">Adicionar ao Carrinho</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-pizzas">
+
+
+
+    <div class="card">
+      <img src="../img/pizza-brocolis.jpg" class="card-img-top" alt="Pizza">
+      <div class="card-body">
+        <h5 class="card-title">Pizza Brocolis</h5>
+        <p class="card-text">R$ 50,00</p>
+        <button class="pedir" data-sabor="Mussarela" data-preco="50">Pedir</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="../img/pizza-4_quejos.jpg" class="card-img-top" alt="Pizza">
+      <div class="card-body">
+        <h5 class="card-title">Pizza 4 Queijos</h5>
+        <p class="card-text">R$ 55,00</p>
+        <button class="pedir" data-sabor="Calabresa" data-preco="55">Pedir</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="../img/pizza_lombo.jpg" class="card-img-top" alt="Pizza">
+      <div class="card-body">
+        <h5 class="card-title">Pizza Lombo</h5>
+        <p class="card-text">R$ 60,00</p>
+        <button class="pedir" data-sabor="Portuguesa" data-preco="60">Pedir</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Pedido -->
+  <div class="modal fade" id="pedidoModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Adicionar ao Carrinho</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="pedidoForm">
+            <div class="form-group">
+              <label>Quantidade:</label>
+              <input type="number" id="quantidade" class="form-control" min="1" value="1">
+            </div>
+            <div class="form-group">
+              <label>Ingredientes adicionais:</label>
+              <select multiple class="form-control" id="ingredientes">
+                <option value="Azeitona">Azeitona</option>
+                <option value="Bacon">Bacon</option>
+                <option value="Cebola">Cebola</option>
+                <option value="Tomate">Tomate</option>
+              </select>
+            </div>
+            <input type="hidden" id="pizzaSabor">
+            <input type="hidden" id="pizzaPreco">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="adicionarCarrinho">Adicionar ao Carrinho</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Start de Bebidas -->
+<div id="bebidas-section" class="container-bebidas" style="display: flex; justify-content: space-around; margin: 20px 0;">
+  <div class="card" style="width: 18rem; text-align: center;">
+    <img src="../img/coca.jpeg" class="card-img-top" alt="Refrigerante Coca-Cola">
+    <div class="card-body">
+      <h5 class="card-title">Coca-Cola</h5>
+      <p class="card-text">R$ 8,00</p>
+      <button class="btn btn-custom" data-bebida="Coca-Cola" data-preco="8">Pedir</button>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem; text-align: center;">
+    <img src="../img/guarana.webp" class="card-img-top" alt="Refrigerante Guaraná">
+    <div class="card-body">
+      <h5 class="card-title">Guaraná</h5>
+      <p class="card-text">R$ 7,00</p>
+      <button class="btn btn-custom" data-bebida="Guaraná" data-preco="7">Pedir</button>
+    </div>
+  </div>
+</div>
+
+  <!-- end de Bebidas -->
+
+  <div id="cart" class="container">
+    <h3>Carrinho de Compras</h3>
+    <ul id="cartItems" class="list-group mb-3"></ul>
+    <button id="finalizarPedido" class="btn btn-success" style="display: none;">Finalizar Pedido</button>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+  <script src="../js/script1.js"></script>
+  <br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
